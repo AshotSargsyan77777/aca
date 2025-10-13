@@ -17,17 +17,3 @@ int main() {
 }
 
 
-#include <iostream>
-#include <iomanip>
-int main(){
-    double celsius;
-    double fahrenheit;
-    double kelvin;
-    std::cout << "celsius";
-    std::cin>>celsius;
-    fahrenheit = (celsius * 9.0 / 5.0) + 32;
-    kelvin = celsius + 273.15; 
-    std::cout      <<fahrenheit<< "F"<<std::endl;
-    std::cout    <<kelvin<<"K"<<std::endl;
-    return 0;
-}
