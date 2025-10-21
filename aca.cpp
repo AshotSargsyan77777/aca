@@ -121,63 +121,105 @@
 
 
 
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
+// #include <iostream>
+// #include <cstdlib>
+// #include <ctime>
 
-int main(int argc, char* argv[]) {
-    if (argc != 3) {
-        std::cout << "ogtagorcum " << argv[0] << " <x> <y>\n";
-        return 1;
-    }
+// int main(int argc, char* argv[]) {
+//     if (argc != 3) {
+//         std::cout << "ogtagorcum " << argv[0] << " <x> <y>\n";
+//         return 1;
+//     }
 
-    int x = std::atoi(argv[1]);
-    int y = std::atoi(argv[2]);
+//     int x = std::atoi(argv[1]);
+//     int y = std::atoi(argv[2]);
 
-    if (x <= 0 || y <= 0) {
-        std::cout << "x ev y petq e linen drakan amboxj tver\n";
-        return 1;
-    }
+//     if (x <= 0 || y <= 0) {
+//         std::cout << "x ev y petq e linen drakan amboxj tver\n";
+//         return 1;
+//     }
 
     
-    int** arr = (int**) std::malloc(x * sizeof(int*));
-    if (!arr) {
-        std::cout << "chhajoxvec\n";
-        return 1;
-    }
+//     int** arr = (int**) std::malloc(x * sizeof(int*));
+//     if (!arr) {
+//         std::cout << "chhajoxvec\n";
+//         return 1;
+//     }
 
-    std::srand(std::time(nullptr));
+//     std::srand(std::time(nullptr));
 
-    for (int i = 0; i < x; i++) {
-        arr[i] = (int*) std::malloc(y * sizeof(int));
-        if (!arr[i]) {
-            std::cout << "chhajoxvec\n";
+//     for (int i = 0; i < x; i++) {
+//         arr[i] = (int*) std::malloc(y * sizeof(int));
+//         if (!arr[i]) {
+//             std::cout << "chhajoxvec\n";
             
-            for (int k = 0; k < i; k++)
-                std::free(arr[k]);
-            std::free(arr);
-            return 1;
-        }
-        for (int j = 0; j < y; j++)
-            arr[i][j] = std::rand() % 100; 
-    }
+//             for (int k = 0; k < i; k++)
+//                 std::free(arr[k]);
+//             std::free(arr);
+//             return 1;
+//         }
+//         for (int j = 0; j < y; j++)
+//             arr[i][j] = std::rand() % 100; 
+//     }
 
     
-    for (int i = 0; i < x; i++) {
-        for (int j = 0; j < y; j++)
-            std::cout << arr[i][j] << " ";
-        std::cout << "\n";
-    }
+//     for (int i = 0; i < x; i++) {
+//         for (int j = 0; j < y; j++)
+//             std::cout << arr[i][j] << " ";
+//         std::cout << "\n";
+//     }
 
     
-    for (int i = 0; i < x; i++)
-        std::free(arr[i]);
-    std::free(arr);
+//     for (int i = 0; i < x; i++)
+//         std::free(arr[i]);
+//     std::free(arr);
+
+//     return 0;
+// }
+
+
+//խնդիր 44
+#include <iostream>
+#include <string>
+
+class car{
+private:    
+    std::string m_brand;
+    std::string m_model;
+    int m_year;
+    double m_engine;
+    int m_HP;
+ public:
+    car(std::string brand,std::string model,int year,double engine,int HP)
+    {
+        m_brand = brand;
+        m_model = model;
+        m_year = year;
+        m_engine = engine;
+        m_HP = HP;
+    }
+public:
+    void print()
+    {
+        std::cout << "brand =" << m_brand << std::endl;
+        std::cout << "model = " << m_model << std::endl;
+        std::cout << "year = " << m_year << std::endl;
+        std::cout << "engine = " << m_engine << std::endl;
+        std::cout << "HP = " << m_HP << std::endl;
+
+    }
+
+
+};
+int main(int argc, char*argv[])
+{
+    car Merc("Mercedes", "C300", 2010, 2.0, 255);
+
+
+    Merc.print();
 
     return 0;
 }
-
-
 
 
 
