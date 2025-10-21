@@ -1,0 +1,55 @@
+#include <iostream>
+// #include <cstdlib>
+
+// struct MyClass {
+//     static void* operator new(std::size_t size) {
+//         std::cout << "operator new" << std::endl;
+//         return std::malloc(size);
+//     }
+
+//     static void operator delete(void* ptr) {
+//         std::cout << "operator delete" << std::endl;
+//         std::free(ptr);
+//     }
+// };
+
+// int main() {
+//     MyClass* obj = new MyClass;
+//     delete obj;
+//     return 0;
+// }
+
+//խնդիր 38
+// #include <iostream>
+// #include <cstdlib>
+// #include <ctime>
+
+// struct MyClass {
+//     int value;
+
+//     static void* operator new[](std::size_t size) {
+//         std::cout << "operator new[]\n";
+//         return std::malloc(size);
+//     }
+
+//     static void operator delete[](void* ptr) {
+//         std::cout << "operator delete[]\n";
+//         std::free(ptr);
+//     }
+// };
+
+// int main() {
+//     std::srand(std::time(nullptr));
+
+//     int n = 10;                     
+//     MyClass* arr = new MyClass[n];  
+//     for (int i = 0; i < n; ++i)
+//         arr[i].value = std::rand() % 100;
+
+//     for (int i = 0; i < n; ++i)
+//         std::cout << arr[i].value << " ";
+//     std::cout << std::endl;
+
+//     delete[] arr; 
+//     return 0;
+// }
