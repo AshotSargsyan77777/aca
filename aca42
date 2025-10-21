@@ -1,0 +1,55 @@
+#include <iostream>
+// #include <cstdlib>
+// #include <ctime>
+
+// int main(int argc, char* argv[]) {
+//     if (argc != 3) {
+//         std::cout << "ogtagorcum " << argv[0] << " <x> <y>\n";
+//         return 1;
+//     }
+
+//     int x = std::atoi(argv[1]);
+//     int y = std::atoi(argv[2]);
+
+//     if (x <= 0 || y <= 0) {
+//         std::cout << "x ev y petq e linen drakan amboxj tver\n";
+//         return 1;
+//     }
+
+    
+//     int** arr = (int**) std::malloc(x * sizeof(int*));
+//     if (!arr) {
+//         std::cout << "chhajoxvec\n";
+//         return 1;
+//     }
+
+//     std::srand(std::time(nullptr));
+
+//     for (int i = 0; i < x; i++) {
+//         arr[i] = (int*) std::malloc(y * sizeof(int));
+//         if (!arr[i]) {
+//             std::cout << "chhajoxvec\n";
+            
+//             for (int k = 0; k < i; k++)
+//                 std::free(arr[k]);
+//             std::free(arr);
+//             return 1;
+//         }
+//         for (int j = 0; j < y; j++)
+//             arr[i][j] = std::rand() % 100; 
+//     }
+
+    
+//     for (int i = 0; i < x; i++) {
+//         for (int j = 0; j < y; j++)
+//             std::cout << arr[i][j] << " ";
+//         std::cout << "\n";
+//     }
+
+    
+//     for (int i = 0; i < x; i++)
+//         std::free(arr[i]);
+//     std::free(arr);
+
+//     return 0;
+// }
