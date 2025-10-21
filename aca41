@@ -1,0 +1,42 @@
+#include <iostream>
+// #include <cstdlib>
+// #include <ctime>
+
+// int main(int argc, char* argv[]) {
+//     if (argc != 3) {
+//         std::cout << "ogtagorcum " << argv[0] << " <x> <y>\n";
+//         return 1;
+//     }
+
+//     int x = std::atoi(argv[1]);
+//     int y = std::atoi(argv[2]);
+
+//     if (x <= 0 || y <= 0) {
+//         std::cout << "x y petq e linen drakan amboxj tver";
+//         return 1;
+//     }
+
+//     int** arr = new int*[x];
+//     std::srand(std::time(nullptr));
+
+//     for (int i = 0; i < x; i++) {
+//         arr[i] = new int[y];
+//         for (int j = 0; j < y; j++) {
+//             arr[i][j] = std::rand() % 100;
+//         }
+//     }
+
+//     for (int i = 0; i < x; i++) {
+//         for (int j = 0; j < y; j++) {
+//             std::cout << arr[i][j] << " ";
+//         }
+//         std::cout << "\n";
+//     }
+
+//     for (int i = 0; i < x; i++) {
+//         delete[] arr[i];
+//     }
+//     delete[] arr;
+
+//     return 0;
+// }
