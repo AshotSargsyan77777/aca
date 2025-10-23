@@ -1,0 +1,45 @@
+//խնդիր 46
+#include <iostream>
+#include <string>
+
+class Engine {
+public:
+    std::string m_model;
+    int m_hp;
+
+    Engine(std::string model, int hp) {
+        m_model = model;
+        m_hp = hp;
+    }
+
+    void showInfo() {
+        std::cout << "Engine model: " << m_model
+                  << ", horsepower: " << m_hp << std::endl;
+    }
+};
+
+class Driver {
+public:
+    std::string m_name;
+    int m_age;
+
+    Driver(std::string name, int age) {
+        m_name = name;
+        m_age = age;
+    }
+
+    void driveCar(std::string carModel, Engine e) {
+        std::cout << m_name << " (age " << m_age << ") is driving a "
+                  << carModel << std::endl;
+        e.showInfo();
+    }
+};
+
+int main() {
+    Engine engine1("6.3 V8", 450);
+    Driver driver1("Ashot", 18);
+
+    driver1.driveCar("Mercedes W221", engine1);
+
+    return 0;
+}
