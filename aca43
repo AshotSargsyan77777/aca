@@ -1,36 +1,59 @@
-
-//խնդիր43
 #include <iostream>
 
 class Matrix {
 private:
-    int data[3][3]; 
+    int** data;
+    int rows;
+    int cols;
 
 public:
-    
+    Matrix(int r, int c) {
+        rows = r;
+        cols = c;
+
+        
+        data = new int*[rows];
+        for (int i = 0; i < rows; i++) {
+            data[i] = new int[cols];
+        }
+    }
+
     void input() {
-        std::cout << "3x3 matric\n";
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        std::cout << "mutqagrir " << rows << "x" << cols << " matrici elementnery:\n";
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
                 std::cin >> data[i][j];
             }
         }
     }
 
     void display() {
-        std::cout << "Matric\n";
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        std::cout << "matric:\n";
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
                 std::cout << data[i][j] << " ";
             }
             std::cout << std::endl;
         }
     }
+
+    ~Matrix() {
+        
+        for (int i = 0; i < rows; i++) {
+            delete[] data[i];
+        }
+        delete[] data;
+    }
 };
 
 int main() {
-    Matrix A;
+    int r, c;
+    std::cout << "mutqagrir toxeri ev syuneri qanaky: ";
+    std::cin >> r >> c;
+
+    Matrix A(r, c);
     A.input();
     A.display();
+
     return 0;
 }
