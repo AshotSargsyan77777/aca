@@ -1,0 +1,36 @@
+խնդիր 49
+#include <iostream>
+#include <string>
+class Car {
+public:
+    std::string brand;
+    std::string model;
+
+    void printInfo() {
+        std::cout << " "<< brand <<  " " << model << std::endl;
+    }
+};
+
+
+class Parking {
+public:
+    void parkCar(Car car) {
+        std::cout << "Parking car:";
+        car.printInfo();
+    }
+};
+
+int main() {
+    
+    Car myCar;
+    myCar.brand = "Mercedes";
+    myCar.model = "C300";
+
+    
+    Parking parking;
+
+    
+    parking.parkCar(myCar);
+
+    return 0;
+}
