@@ -1,45 +1,69 @@
-//խնդիր 46
+խնդիր 46
 #include <iostream>
 #include <string>
 
+
 class Engine {
-public:
+private:
     std::string m_model;
     int m_hp;
 
-    Engine(std::string model, int hp) {
-        m_model = model;
-        m_hp = hp;
+public:
+    Engine(std::string type = "BENZIN", int horsepower = 120)
+        : m_model(type), m_hp(horsepower) {}
+
+    void start() const {
+        std::cout << "Engine started (" << m_model << ", " << m_hp << " HP)" << std::endl;
     }
 
-    void showInfo() {
-        std::cout << "Engine model: " << m_model
-                  << ", horsepower: " << m_hp << std::endl;
-    }
+    std::string getType() const { return m_model; }
+    int getHorsepower() const { return m_hp; }
 };
 
-class Driver {
+
+
+class Car {
+private:
+    std::string m_brand;
+    Engine m_engine; 
+
 public:
+    Car(std::string brand, Engine engine)
+        : m_brand(brand), m_engine(engine) {}
+
+    void startCar() const {
+        std::cout << m_brand << " is starting..." << std::endl;
+        m_engine.start();
+    }
+
+    std::string getBrand() const { return m_brand; }
+};
+
+
+
+class Driver {
+private:
     std::string m_name;
     int m_age;
 
-    Driver(std::string name, int age) {
-        m_name = name;
-        m_age = age;
-    }
+public:
+    Driver(std::string name, int age)
+        : m_name(name), m_age(age) {}
 
-    void driveCar(std::string carModel, Engine e) {
-        std::cout << m_name << " (age " << m_age << ") is driving a "
-                  << carModel << std::endl;
-        e.showInfo();
+    void driveCar(const Car& car) const { 
+        std::cout << m_name << " (" << m_age << " y.o.) is driving a " 
+                  << car.getBrand() << std::endl;
+        car.startCar();
     }
 };
 
-int main() {
-    Engine engine1("6.3 V8", 450);
-    Driver driver1("Ashot", 18);
 
-    driver1.driveCar("Mercedes W221", engine1);
+int main() {
+    Engine e1("BENZIN", 180);
+    Car c1("MERCEDES", e1);        
+    Driver d1("Ashot", 18);   
+
+    d1.driveCar(c1);          
 
     return 0;
 }
