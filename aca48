@@ -1,0 +1,110 @@
+//Խնդիր48
+#include <iostream>
+
+class Matrix {
+private:
+    int m_rows;
+    int m_cols;
+    int** m_data; 
+
+public:
+    
+    Matrix(int rows, int cols) : m_rows(rows), m_cols(cols) {
+        m_data = new int*[m_rows];
+        for (int i = 0; i < m_rows; ++i) {
+            m_data[i] = new int[m_cols];
+            for (int j = 0; j < m_cols; ++j) {
+                m_data[i][j] = 0; 
+            }
+        }
+    }
+
+    
+    Matrix(const Matrix& other) {
+        m_rows = other.m_rows;
+        m_cols = other.m_cols;
+
+        
+        m_data = new int*[m_rows];
+        for (int i = 0; i < m_rows; ++i) {
+            m_data[i] = new int[m_cols];
+            for (int j = 0; j < m_cols; ++j) {
+                m_data[i][j] = other.m_data[i][j];
+            }
+        }
+    }
+
+    
+    Matrix& operator=(const Matrix& other) {
+        if (this == &other) { 
+            return *this;
+        }
+
+        
+        for (int i = 0; i < m_rows; ++i) {
+            delete[] m_data[i];
+        }
+        delete[] m_data;
+
+        
+        m_rows = other.m_rows;
+        m_cols = other.m_cols;
+
+        m_data = new int*[m_rows];
+        for (int i = 0; i < m_rows; ++i) {
+            m_data[i] = new int[m_cols];
+            for (int j = 0; j < m_cols; ++j) {
+                m_data[i][j] = other.m_data[i][j];
+            }
+        }
+
+        return *this;
+    }
+    ~Matrix() {
+        for (int i = 0; i < m_rows; ++i) {
+            delete[] m_data[i];
+        }
+        delete[] m_data;
+    }
+
+
+    void input() {
+        std::cout << "matrici tarery (" << m_rows << "x" << m_cols << "):\n";
+        for (int i = 0; i < m_rows; ++i) {
+            for (int j = 0; j < m_cols; ++j) {
+                std::cin >> m_data[i][j];
+            }
+        }
+    }
+
+    
+    void print() const {
+        for (int i = 0; i < m_rows; ++i) {
+            for (int j = 0; j < m_cols; ++j) {
+                std::cout << m_data[i][j] << " ";
+            }
+            std::cout << std::endl;
+        }
+    }
+};
+
+int main() {
+    Matrix m1(3, 3);
+    m1.input();
+
+    std::cout << "\nm1 matric:\n";
+    m1.print();
+
+    
+    Matrix m2 = m1;
+    std::cout << "\nm2 (copy  m1):\n";
+    m2.print();
+
+
+    Matrix m3(2, 2);
+    m3 = m1;
+    std::cout << "\nm3 (assigned m1):\n";
+    m3.print();
+
+    return 0;
+}
