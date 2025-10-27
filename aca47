@@ -1,0 +1,76 @@
+#include <iostream>
+#include <string>
+
+
+class Engine {
+private:
+    std::string m_type;
+    int m_horsepower;
+
+public:
+    Engine(std::string type = "benzin", int horsepower = 120)
+        : m_type(type), m_horsepower(horsepower) {}
+
+    void start() const {
+        std::cout << "Engine started (" << m_type << ", " << m_horsepower << " HP)" << std::endl;
+    }
+
+    std::string getType() const { return m_type; }
+    int getHorsepower() const { return m_horsepower; }
+};
+
+
+
+class Car {
+private:
+    std::string m_brand;
+    Engine m_engine;
+
+public:
+    
+    Car(std::string brand, Engine engine)
+        : m_brand(brand), m_engine(engine) {}
+
+
+    Car(const Car& other)
+        : m_brand(other.m_brand), m_engine(other.m_engine) {
+        std::cout << "Copy constructor  " << m_brand << std::endl;
+    }
+
+    
+    Car& operator=(const Car& other) {
+        std::cout << "Assignment operator " << std::endl;
+        if (this != &other) {  
+            m_brand = other.m_brand;
+            m_engine = other.m_engine;
+        }
+        return *this;
+    }
+
+    void startCar() const {
+        std::cout << m_brand << " is starting..." << std::endl;
+        m_engine.start();
+    }
+
+    std::string getBrand() const { return m_brand; }
+};
+
+
+
+int main() {
+    Engine e1("benzin", 180);
+    Car c1("Mercedes", e1);
+
+    
+    Car c2 = c1;
+
+    
+    Car c3("Audi", Engine("gaz", 150));
+    c3 = c1;
+
+    c1.startCar();
+    c2.startCar();
+    c3.startCar();
+
+    return 0;
+}
