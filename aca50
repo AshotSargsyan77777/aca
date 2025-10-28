@@ -1,0 +1,91 @@
+//խնդիր 50
+#include <iostream>
+
+class Matrix {
+private:
+    int** data;
+    int rows;
+    int cols;
+
+public:
+    Matrix(int r, int c) {
+        rows = r;
+        cols = c;
+
+        data = new int*[rows];
+        for (int i = 0; i < rows; i++) {
+            data[i] = new int[cols];
+        }
+    }
+
+    void input() {
+        std::cout << "mutqagrir " << rows << "x" << cols << " matrici elementnery:\n";
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                std::cin >> data[i][j];
+            }
+        }
+    }
+
+    void display() {
+        std::cout << "matric:\n";
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                std::cout << data[i][j] << " ";
+            }
+            std::cout << std::endl;
+        }
+    }
+
+    
+    void rotate90() {
+        int** rotated = new int*[cols];
+        for (int i = 0; i < cols; i++) {
+            rotated[i] = new int[rows];
+        }
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                rotated[j][rows - 1 - i] = data[i][j];
+            }
+        }
+
+        
+        for (int i = 0; i < rows; i++) {
+            delete[] data[i];
+        }
+        delete[] data;
+
+    
+        data = rotated;
+        int temp = rows;
+        rows = cols;
+        cols = temp;
+    }
+
+    ~Matrix() {
+        for (int i = 0; i < rows; i++) {
+            delete[] data[i];
+        }
+        delete[] data;
+    }
+};
+
+int main() {
+    int r, c;
+    std::cout << "mutqagrir toxeri ev syuneri qanaky: ";
+    std::cin >> r >> c;
+
+    Matrix A(r, c);
+    A.input();
+
+    std::cout << "\nSksbnakan matric:\n";
+    A.display();
+
+    A.rotate90();
+
+    std::cout << "\nShurjvac matric (90 astijanov):\n";
+    A.display();
+
+    return 0;
+}
