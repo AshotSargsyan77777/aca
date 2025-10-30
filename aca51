@@ -1,0 +1,58 @@
+#include <iostream>
+
+class Matrix {
+private:
+    int data[3][3];  
+
+public:
+    
+    void input() {
+        std::cout << "mutqagreq matric\n";
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                std::cin >> data[i][j];
+            }
+        }
+    }
+
+    
+    void display() const {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                std::cout << data[i][j] << " ";
+            }
+            std::cout << std::endl;
+        }
+    }
+
+    
+    Matrix operator*(const Matrix& other) const {
+        Matrix result;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                result.data[i][j] = 0;
+                for (int k = 0; k < 3; k++) {
+                    result.data[i][j] += data[i][k] * other.data[k][j];
+                }
+            }
+        }
+        return result;
+    }
+};
+
+int main() {
+    Matrix A, B, C;
+
+    std::cout << "matric A\n";
+    A.input();
+
+    std::cout << "matric B\n";
+    B.input();
+
+    C = A * B;  
+
+    std::cout << "result (A * B):\n";
+    C.display();
+
+    return 0;
+}
